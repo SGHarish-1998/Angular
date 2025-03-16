@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-3">
+        <h1 >Harish</h1>  
+    </div>
+   
+</div>
+
+<select [(ngModel)]="sec">
+    <option value="Harish">H</option>
+    <option value="Fill">F</option>
+    <option value="Stu">S</option>
+</select>
+
+<ul>
+    <li *ngFor="let city of cityArrray">{{city}}</li>
+</ul>
+
+<select>
+    <option *ngFor="let cityname of cityArrray">{{cityname}}</option>
+</select>
+
+<table  class="table table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mark</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+            <td>{{student.Id}}</td>
+            <td>{{student.Name}}</td>
+            <td>{{student.Mark}}</td>
+            <td>{{student.Active}}</td>
+        </tr>
+    </tbody>
+</table>
+
