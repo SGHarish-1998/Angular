@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './databinding.component.css'
 })
 export class DatabindingComponent {
-    name : string = "sgharish-shut the fuking mouth.."
+    name : string = "sgharish.."
 
     namek = "sgh123"
 

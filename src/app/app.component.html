@@ -1,3 +1,24 @@
-<app-post-api></app-post-api>
+<nav class="navbar navbar-expand-lg shadow custom-navbar">
+  <div class="container">
+    <!-- Enhanced CRUD Branding -->
+    <a class="navbar-brand fw-bold fs-3 crud-logo" href="#">CRUD OPERATION</a>
 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link btn btn-outline-primary fw-semibold px-4 mx-1 text-uppercase nav-btn" routerLink="/get">GET</a>
+        <a class="nav-link btn btn-outline-success fw-semibold px-4 mx-1 text-uppercase nav-btn" routerLink="/post">POST</a>
+        <a class="nav-link btn btn-outline-warning fw-semibold px-4 mx-1 text-uppercase nav-btn" routerLink="/put">PUT</a>
+        <a class="nav-link btn btn-outline-danger fw-semibold px-4 mx-1 text-uppercase nav-btn" routerLink="/delete">DELETE</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Display the selected component -->
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

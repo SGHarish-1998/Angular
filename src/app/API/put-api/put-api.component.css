@@ -46,8 +46,29 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-success:hover {
-    background-color: #28a745;
+.btn-warning {
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #dc3545;
+}
+
+/* Add space between buttons */
+.btn-sm {
+    padding: 5px 10px;
+}
+
+.me-2 {
+    margin-right: 8px;
 }
 
 /* Responsive Design */
@@ -60,7 +81,7 @@
         font-size: 18px;
     }
 
-    .btn-success {
+    .btn-success, .btn-warning {
         font-size: 14px;
     }
 }

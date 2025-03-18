@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <div class="row">
+      <!-- Table: Left Side -->
+      <div class="col-md-8">
+        <h4>Department Lists</h4>
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Logo</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dep of departmentList">
+              <td>{{ dep.departmentId }}</td>
+              <td>{{ dep.departmentName }}</td>
+              <td>{{ dep.departmentLogo }}</td>
+              <td>
+                <button class = "btn btn-danger" (click) = "onDelete(dep.departmentId)">Delete</button>
+              </td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>
+
+     

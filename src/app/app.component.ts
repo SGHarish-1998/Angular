@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-
-import { GetApiComponent } from './API/get-api/get-api.component';
-import { PostApiComponent } from './API/post-api/post-api.component';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [PostApiComponent],
+  imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -15,7 +12,7 @@ export class AppComponent {
 
   constructor(private router:Router)
   {
-    
+
   }
 
   switchHarish()

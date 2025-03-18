@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DepartmentService } from '../../services/department.service';
 
 @Component({
   selector: 'app-post-api',
@@ -19,12 +20,12 @@ export class PostApiComponent implements OnInit {
       departmentLogo:""
     };
    
-    constructor(private http:HttpClient)
+    constructor(private deptService:DepartmentService)
     {
 
     }
    ngOnInit(): void {
-      this.http.get("https://projectapi.gerasim.in/api/Complaint/GetParentDepartment").subscribe((result:any)=>{
+      this.deptService.getAllDepartment().subscribe((result:any)=>{
         this.departmentList = result.data;
       });
    }
@@ -32,13 +33,16 @@ export class PostApiComponent implements OnInit {
 
    onSummitForm()
    {
-    this.http.post("https://projectapi.gerasim.in/api/Complaint/AddNewDepartment",this.deparmentRow).subscribe((result:any)=>{
+    this.deptService.addDepartment(this.deparmentRow).subscribe((result:any)=>{
       if(result.result)
       {
-        alert(result.result.data);
+        alert('Table get updated');
+        this.deptService.getAllDepartment().subscribe((result:any)=>{
+          this.departmentList = result.data;
+        });
       }
       else{
-        alert("no result");
+        alert(result.message);
       }
     });
    }

@@ -2,20 +2,24 @@
   <div class="row">
       <!-- Table: Left Side -->
       <div class="col-md-8">
-          <h4 class="mb-3">Department List</h4>
+          <h4 class="mb-3">Department Lists</h4>
           <table class="table table-bordered table-striped text-center">
               <thead class="table-dark">
                   <tr>
                       <th>ID</th>
                       <th>Name</th>
                       <th>Logo</th>
+                      <th>Action</th>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let dep of departmentList">
                       <td>{{ dep.departmentId }}</td>
                       <td>{{ dep.departmentName }}</td>
-                      <td>{{ dep.departmentLogo }}</td>
+                      <td>{{dep.departmentLogo}}</td>
+                      <td>
+                          <button class="btn btn-primary btn-sm me-2" (click)="onEdit(dep)">Edit</button>
+                      </td>
                   </tr>
               </tbody>
           </table>
@@ -24,7 +28,7 @@
       <!-- Form: Right Side -->
       <div class="col-md-4">
           <div class="form-card">
-              <h4 class="form-title">Add Department</h4>
+              <h4 class="form-title">Update Department</h4>
               <form>
                   <div class="mb-3">
                       <label for="id" class="form-label">Department ID</label>
@@ -37,12 +41,12 @@
                   </div>
 
                   <div class="mb-3">
-                      <label for="logo" class="form-label">Department Logo (URL)</label>
+                      <label for="logo" class="form-label">Department Logo</label>
                       <input type="text" id="logo" class="form-control" [(ngModel)]="deparmentRow.departmentLogo" name="logo" required placeholder="Paste Logo URL">
                   </div>
-                  
-                  <button type="submit" (click)="onSummitForm()" class="btn btn-success w-100">
-                      Add Department
+
+                  <button *ngIf="deparmentRow.departmentId != 0" type="submit" class="btn btn-warning w-100" (click)="onUpdateForm()">
+                      Edit Department
                   </button>
               </form>
           </div>
