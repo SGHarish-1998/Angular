@@ -37,13 +37,13 @@ export class PutApiComponent {
   onUpdateForm() {
     this.deptService.updateDepartment(this.deparmentRow).subscribe((result: any) => {
       if (result.result) {
-        alert('Table get updated');
+        alert('Table got updated.');
         this.deptService.getAllDepartment().subscribe((result: any) => {
           this.departmentList = result.data;
         });
       }
       else {
-        alert(result.message);
+        alert(result.message + 'Table not Updated.');
       }
     });
   }

@@ -25,23 +25,24 @@
       <div class="col-md-4">
           <div class="form-card">
               <h4 class="form-title">Add Department</h4>
-              <form>
-                  <div class="mb-3">
-                      <label for="id" class="form-label">Department ID</label>
-                      <input type="number" id="id" class="form-control" [(ngModel)]="deparmentRow.departmentId" name="id" required placeholder="Enter ID">
-                  </div>
-
+              <form #deptForm="ngForm" (ngSubmit)="onSummitForm(deptForm)">
                   <div class="mb-3">
                       <label for="name" class="form-label">Department Name</label>
-                      <input type="text" id="name" class="form-control" [(ngModel)]="deparmentRow.departmentName" name="name" required placeholder="Enter Name">
+                      <input type="text" id="name" class="form-control" [(ngModel)]="deparmentRow.departmentName" name="name" #deptName = "ngModel" required placeholder="Enter Name">
                   </div>
+                  <span class="text-danger" *ngIf="deptName.touched && deptName.invalid">
+                    Department Name is required.
+                </span>
 
                   <div class="mb-3">
                       <label for="logo" class="form-label">Department Logo (URL)</label>
-                      <input type="text" id="logo" class="form-control" [(ngModel)]="deparmentRow.departmentLogo" name="logo" required placeholder="Paste Logo URL">
+                      <input type="text" id="logo" class="form-control" [(ngModel)]="deparmentRow.departmentLogo" name="logo" #deptLogo = "ngModel" required placeholder="Paste Logo URL">
                   </div>
+                  <span class="text-danger" *ngIf="deptLogo.touched && deptLogo.invalid">
+                    Department Logo is required.
+                </span>
                   
-                  <button type="submit" (click)="onSummitForm()" class="btn btn-success w-100">
+                  <button type="submit" [disabled] = "!(deparmentRow.departmentName && deparmentRow.departmentLogo)"  class="btn btn-success w-100">
                       Add Department
                   </button>
               </form>

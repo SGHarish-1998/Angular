@@ -1,20 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { DepartmentService } from '../../services/department.service';
+import { IDepartment } from '../../Models/model';
 
 @Component({
   selector: 'app-post-api',
-  imports: [HttpClientModule,CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css'
 })
 export class PostApiComponent implements OnInit {
 
-    departmentList:any[] = [];
+    departmentList:IDepartment[] = [];
 
-    deparmentRow:any = {
+    deparmentRow:IDepartment = {
       departmentId:0,
       departmentName:"",
       departmentLogo:""
@@ -31,7 +32,7 @@ export class PostApiComponent implements OnInit {
    }
 
 
-   onSummitForm()
+   onSummitForm(deptForm: NgForm)
    {
     this.deptService.addDepartment(this.deparmentRow).subscribe((result:any)=>{
       if(result.result)
@@ -40,6 +41,7 @@ export class PostApiComponent implements OnInit {
         this.deptService.getAllDepartment().subscribe((result:any)=>{
           this.departmentList = result.data;
         });
+        this.clearForm(deptForm);
       }
       else{
         alert(result.message);
@@ -47,6 +49,13 @@ export class PostApiComponent implements OnInit {
     });
    }
 
-  
-
+   clearForm(deptForm: NgForm) {
+    if (deptForm) {
+        deptForm.resetForm({
+            departmentId: 0,
+            departmentName: "",
+            departmentLogo: ""
+        });
+    }
+}
 }

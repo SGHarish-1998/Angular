@@ -1,5 +1,7 @@
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IDepartment } from '../Models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +12,20 @@ export class DepartmentService {
 
   constructor(private http:HttpClient) { }
 
-  getAllDepartment()
+  getAllDepartment():Observable<IDepartment[]>
   {
     //no need for subscribe just return the observable only.
-    return this.http.get("https://projectapi.gerasim.in/api/Complaint/GetParentDepartment");
+    return this.http.get<IDepartment[]>("https://projectapi.gerasim.in/api/Complaint/GetParentDepartment");
   }
 
-  addDepartment(data:any)
+  addDepartment(data:IDepartment)
   {
-    return this.http.post("https://projectapi.gerasim.in/api/Complaint/AddNewDepartment",data);
+    return this.http.post<IDepartment[]>("https://projectapi.gerasim.in/api/Complaint/AddNewDepartment",data);
   }
 
-  updateDepartment(data:any)
+  updateDepartment(data:IDepartment)
   {
-    return this.http.post("https://projectapi.gerasim.in/api/Complaint/UpdateDepartment",data);
+    return this.http.post<IDepartment[]>("https://projectapi.gerasim.in/api/Complaint/UpdateDepartment",data);
   }
   
   deleteDepartment(id:number)
